@@ -2,16 +2,20 @@
 import React from "react";
 import "./index.css";
 
-function Pizza(props) {
-  // console.log(props);
+function Pizza({ pizzaObj }) {
+  // console.log(pizzaObj);
+
+  // if (pizzaObj.soldOut) return null;
 
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt="Pizza spinaci" />
-      <h3 className="pizzas">{props.name}</h3>
-      <p>{props.ingrediens}</p>
-      <span>{props.price}</span>
-    </div>
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
+      </div>
+    </li>
   );
 }
 export default Pizza;
